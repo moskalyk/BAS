@@ -50,41 +50,21 @@ const memUsage = () => {
     }
 }
 
+var lib = {
+    encrypt: encrypt,
+    decrypt: decrypt
+}
+
+class Bas {
+  constructor() {
+  }
+}
+
+Bas = Object.assign(Bas.prototype, lib);
+
 module.exports = {
     memUsage,
     encrypt,
-    decrypt
+    decrypt,
+    Bas
 }
-
-let startTime, endTime
-
-// memUsage()
-// console.log()
-// console.log()
-// const arrMicro = encrypt(message, [freq1, freq2])
-// memUsage()
-// console.log(`of size: ` + arrMicro.length)
-// const decryptedMicro = decrypt(arrMicro, [freq1, freq2])
-// console.log(decryptedMicro)
-
-// memUsage()
-console.log()
-console.log()
-
-
-startTime = performance.now()
-const arrMacro = encrypt(message, [freq1, freq2], 1)
-endTime = performance.now()
-
-console.log(`Call to doSomething took ${(endTime - startTime)/1000} seconds`)
-
-startTime = performance.now()
-
-const decryptedMacro = decrypt(arrMacro, [freq1, freq2], 1)
-endTime = performance.now()
-
-console.log(`Call to doSomething took ${(endTime - startTime)/1000} seconds`)
-
-// memUsage()
-console.log(`of size: ` + arrMacro.length)
-console.log(decryptedMacro)

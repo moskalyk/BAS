@@ -1,0 +1,25 @@
+{
+  "name": "bas",
+  "version": "0.0.2",
+  "description": "brownian-array security for padded-array using secrets amongst a bundle of passwords",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node tests/index.test.js",
+    "memusage": "node tests/memUsage.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/moskalyk/bas.git"
+  },
+  "keywords": [
+    "security",
+    "data",
+    "brownian scalars",
+    "array"
+  ],
+  "author": "nero",
+  "license": "MIT"
+}

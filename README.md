@@ -2,7 +2,7 @@
 BAS encryption works by splicing together a shared password transported via a p2p protocol network, then woven together to create random pads in an array for a complete array assemblage of encryption and decryption
 
 ## use case
-place a data blob somewhere public and verify a source of origin from encryption creates a target value
+place a data blob somewhere public and verify a source of origin from BAS decrypts to a target value
 
 original    : mymessage
 padded      : m0000y111111111111111m0000000e111111s000000000000000s1111111a00000000g1111111111e
@@ -19,6 +19,28 @@ const basArr = encrypt(message, [frequencyPassword1, frequencyPassword2], 1)
 decrypt(basArr, [frequencyPassword1, frequencyPassword2], 1)
 ```
 
+### example: adding passwords / users
+
+```js
+const { Bas } = require('../')
+
+;(async () => {
+    const freq1 = 'rnft.life'
+    const freq2 = 'mys8p3rp@ssw0rd'
+    
+    const freq3 = 'n3r0'
+    
+    const message = 'nerds'
+    
+    const arrMicro = Bas.encrypt(message, [freq1, freq2])
+    const decrypted = Bas.decrypt(arrMicro, [freq1, freq2])
+    
+    const array3 = Bas.encrypt(decrypted, [freq1, freq2, freq3])
+    const decrypted3 = Bas.decrypt(array3, [freq1, freq2, freq3])
+    
+    console.log(decrypted3)
+})()
+```
 #### scalr of 1
 ```
 this is a password
