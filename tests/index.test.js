@@ -15,4 +15,8 @@ const { Bas } = require('../')
     const decrypted3 = Bas.decrypt(array3, [freq1, freq2, freq3])
     
     console.log(decrypted3)
+    
+    const arrSingular = Bas.encrypt(message, [freq1])
+    const decrypted4 = Bas.decrypt(arrSingular, [freq1])
+    console.log(decrypted4)
 })()

@@ -1,8 +1,5 @@
-const message = 'my test message'
 const enc = new TextEncoder()
 const dec = new TextDecoder()
-const freq1 = enc.encode("this is a password")
-const freq2 = enc.encode("this is 2nd password")
 
 function decrypt(msg, freqs, scalar = 1, timeout=1000) {
     let msgArr = []
@@ -14,8 +11,14 @@ function decrypt(msg, freqs, scalar = 1, timeout=1000) {
 
         for(let w = 0; w < freqs.length; w++){
             for(let i = 0; i < scalar*freqs[w].length; i++){
-                for(let j = 0; j < scalar*freqs[i%freqs.length][i]; j++){
-                    f++
+                if(i%freqs.length){
+                    for(let j = 0; j < scalar*freqs[i%freqs.length][i]; j++){
+                        f++
+                    }
+                } else {
+                    for(let j = 0; j < scalar*freqs[w].length; j++){
+                        f++
+                    }
                 }
             }
         }
@@ -33,8 +36,14 @@ function encrypt(msg, freqs, scalar = 1) {
     for(let k = 0; k < rawEnc.length; k++){
         for(let w = 0; w < freqs.length; w++){
             for(let i = 0; i < scalar*freqs[w].length; i++){
-                for(let j = 0; j < scalar*freqs[i%freqs.length][i]; j++){
-                    encrypted.push(Math.floor(Math.random()*128))
+                if(i%freqs.length){
+                    for(let j = 0; j < scalar*freqs[i%freqs.length][i]; j++){
+                            encrypted.push(Math.floor(Math.random()*128))
+                    }
+                }else {
+                    for(let j = 0; j < scalar*freqs[w].length; j++){
+                            encrypted.push(Math.floor(Math.random()*128))
+                    }
                 }
             }
         }
